@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Kittner - Cost Calculators</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; background-color: #f0f2f5; color: #1c1e21; min-height: 100vh; padding: 40px 20px; box-sizing: border-box; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 50px; }
+        .header img { margin-bottom: 20px; }
+        .header h1 { font-size: 2.8em; font-weight: 700; color: #1c1e21; margin: 0 0 10px 0; }
+        .header p { font-size: 1.2em; color: #606770; margin-top: 0; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+        .card-link { text-decoration: none; color: inherit; display: flex; }
+        .card { background: white; border-radius: 12px; border: 1px solid #dddfe2; box-shadow: 0 2px 4px rgba(0,0,0,0.08); transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; width: 100%; }
+        .card:hover { transform: translateY(-6px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .card-icon { padding: 25px 25px 15px 25px; text-align: center; }
+        .card-icon svg, .card-icon img { width: 56px; height: 56px; object-fit: contain; }
+        .card-icon svg { fill: #1877f2; }
+        .card-content { padding: 0 25px 25px 25px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+        .card-content h3 { margin: 0 0 10px 0; font-size: 1.5em; font-weight: 600; color: #1c1e21; }
+        .card-content p { margin: 0; color: #606770; line-height: 1.6; flex-grow: 1; }
+        .footer { text-align: center; margin-top: 80px; padding-top: 40px; border-top: 1px solid #dddfe2; color: #606770; }
+        .footer h4 { font-size: 1.4em; font-weight: 600; color: #1c1e21; margin-bottom: 15px; }
+        .footer p { font-size: 1em; line-height: 1.7; max-width: 700px; margin: 0 auto 25px auto; }
+        .footer .copyright { font-size: 0.9em; color: #8a8d91; margin-top: 40px; }
+        .footer a { color: #1877f2; text-decoration: none; font-weight: 600; }
+        .footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <div class='header'>
+            <a href="https://kittnerbg.com" target="_blank"><img src="data:image/jpeg;base64,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" alt="Kittner Logo" style="height: 50px; border: 0;"></a>
+            <h1>Kittner Cost Calculators</h1>
+            <p>Select a tool to analyze and forecast operating costs for our industry-leading hygienic equipment.</p>
+        </div>
+        <div class='card-grid'>
+            
+                    <a href='https://kittner2025.github.io/washer-calculator/' target='_blank' class='card-link'>
+                        <div class='card'>
+                            <div class='card-icon'><img src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTMsMTJjMC0xLjEsMC45LTIsMi0yaDE0YzEuMSwwLDIsMC45LDIsMnY3YzAsMS4xLTAuOSwyLTIsMkM1Yy0xLjEsMC0yLTAuOS0yLTJWMTJ6IiAvPjxwYXRoIGQ9Ik02LDFjLTEuMSwwLTIsMC45LTIsMnMwLjksMiwyLDJzMi0wLjksMi0yUzcuMSwxLDYsMXoiIC8+PHBhdGggZD0iTTEyLDNjLTEuMSwwLTIsMC45LTIsMnMwLjksMiwyLDJzMi0wLjksMi0yUzEzLjEsMywxMiwzeiIgLz48cGF0aCBkPSJNMTgsNWMxLjEsMCwyLTAuOSwyLTJzLTAuOS0yLTItMnMtMiwwLjktMiwyUzE2LjksNSwxOCw1eiIgLz48L3N2Zz4=' alt='Tray Washer Calculator Icon'></div>
+                            <div class='card-content'>
+                                <h3>Tray Washer Calculator</h3>
+                                <p>Calculate the total operating costs for various models of industrial tray washing machines.</p>
+                            </div>
+                        </div>
+                    </a>
+                
+
+                    <a href='https://kittner2025.github.io/cabin-washer-calculator/' target='_blank' class='card-link'>
+                        <div class='card'>
+                            <div class='card-icon'><img src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNODE1LDQwSDE1Yy01LjUsMC0xMCw0LjUtMTAsMTB2MzVjMCw1LjUsNC41LDEwLDEwLDEwaDcwYzUuNSwwLDEwLTQuNSwxMC0xMFY1MEM5NSw0NC41LDkwLjUsNDAsODUsNDB6IE04MCw4NUgyMFY1MGg2MFY4NXoiLz48cGF0aCBkPSJNMjUsMTVjLTUuNSwwLTEwLDQuNS0xMCwxMHY1aDEwdjUtYzAtMi44LDIuMi01LDUtNXMsNSwyLjIsNSw1djVoMTB2LTVDNTUsMTkuNSw1MC41LDE1LDQ1LDE1SDI1eiIvPjxwYXRoIGQ9Ik03NSwxNUg1NWMtNS41LDAtMTAsNC41LTEwLDEwdjVoMTB2LTVjMC0yLjgsMi4yLTUsNS01czUsMi4yLDUsNXY1aDEwdjUtQzg1LDE5LjUsODAuNSwxNSw3NSwxNXoiLz48L3N2Zz4=' alt='Cabin Washer Calculator Icon'></div>
+                            <div class='card-content'>
+                                <h3>Cabin Washer Calculator</h3>
+                                <p>Advanced cost estimation tool for industrial cabin washers for buggies, containers, and dolavs.</p>
+                            </div>
+                        </div>
+                    </a>
+                
+
+        </div>
+    </div>
+    <div class='footer'>
+        <h4>Why Choose Kittner?</h4>
+        <p>With decades of German engineering experience, Kittner delivers unparalleled quality and reliability. Our machines are designed for maximum efficiency, hygiene, and durability, ensuring a lower total cost of ownership. Choose Kittner for innovative solutions that drive your business forward.</p>
+        <p class='copyright'>&copy; 2025 Kittner Anlagen- und Maschinenbau. All rights reserved. | <a href='https://kittnerbg.com' target='_blank'>Visit Our Website</a></p>
+    </div>
+</body>
+</html>
